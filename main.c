@@ -124,8 +124,9 @@ char *inputStringData()
 
 void printData(struct studentsData *students, int nextStudent, int abSwitch)
 {
+    int i;
     printf("\n");
-    for (int i = 0; i < nextStudent; i++) {
+    for (i = 0; i < nextStudent; i++) {
         printf("#%d:\n", i + 1);
         printf("        Name: %s", students[i].fullName.name);
         printf("     Surname: %s", students[i].fullName.surname);
@@ -142,7 +143,8 @@ void printData(struct studentsData *students, int nextStudent, int abSwitch)
 
 void freeAll(struct studentsData *students, int nextStudent)
 {
-    for (int i = 0; i < nextStudent; i++) {
+    int i;
+    for (i = 0; i < nextStudent; i++) {
         free(students[i].fullName.name);
         free(students[i].fullName.surname);
         free(students[i].fullName.patronymic);
