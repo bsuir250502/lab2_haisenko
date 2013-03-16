@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 const int arraySize = 30;
 
@@ -34,9 +35,11 @@ float inputNumericalData();
 char *inputStringData();
 void printData(struct studentsData *students, int nextStudent, int abSwitch);
 void freeAll(struct studentsData *students, int nextStudent);
+void checkHelp(char **argc);
 
-int main()
+int main(int argc, char **argv)
 {
+    checkHelp(argv);
     struct studentsData *students;
     students = (struct studentsData *) malloc(arraySize * sizeof(struct studentsData));
     char command[arraySize];
@@ -68,9 +71,9 @@ int main()
 
 int inputData(struct studentsData *students, int nextStudent)
 {
-    printf("Enter first name: ");
+    printf("Enter name: ");
     students[nextStudent].fullName.name = inputStringData();
-    printf("Enter second name: ");
+    printf("Enter surname: ");
     students[nextStudent].fullName.surname = inputStringData();
     printf("Enter patronymic: ");
     students[nextStudent].fullName.patronymic = inputStringData();
@@ -150,4 +153,31 @@ void freeAll(struct studentsData *students, int nextStudent)
         free(students[i].fullName.patronymic);
     }
     free(students);
+}
+
+void checkHelp(char **argc)
+{
+    if (!argc[1]) {
+        return;
+    }
+    if (!strcmp(argc[1], "-h")) {
+        printf("================================================================================\n\n");
+        printf("                                     MANUAL:\n\n");
+        printf("Commands: 1 2 3 4\n\n");
+        printf("1 - Data Input\n");
+        printf("    1) Enter the name. Name should not be an empty string and also should not start with a space.\n");
+        printf("    2) Enter surname. The same as the name.\n");
+        printf("    3) Enter patronymic. The same as the name.\n");
+        printf("    4) Enter growth. The number must be > 0. The fractional part is entered through the point.\n");
+        printf("    5) Enter weight. The same as a growth.\n");
+        printf("    6) Enter vision. The same as a growth.\n");
+        printf("    7) Enter blood group. Must be integer and > 0.\n\n");
+        printf("2 - Print students data. Shows only a) data.\n");
+        printf("    Displays the full names of all the students, also height and weight.\n\n");
+        printf("3 - Print students data. Shows b) data.\n");
+        printf("    Displays the full names of all the students, also height, weight, vision and blood group.\n\n");
+        printf("4 - Exit\n");
+        printf("    Close the program.\n");
+        printf("================================================================================\n");
+    }
 }
