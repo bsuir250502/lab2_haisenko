@@ -35,7 +35,7 @@ float inputNumericalData();
 char *inputStringData();
 void printData(struct studentsData *students, int nextStudent, int abSwitch);
 void freeAll(struct studentsData *students, int nextStudent);
-void checkHelp(char **argc);
+void checkHelp(char **argv);
 
 int main(int argc, char **argv)
 {
@@ -155,29 +155,29 @@ void freeAll(struct studentsData *students, int nextStudent)
     free(students);
 }
 
-void checkHelp(char **argc)
+void checkHelp(char **argv)
 {
-    if (!argc[1]) {
+    if (!argv[1]) {
         return;
     }
-    if (!strcmp(argc[1], "-h")) {
-        printf("================================================================================\n\n");
-        printf("                                     MANUAL:\n\n");
-        printf("Commands: 1 2 3 4\n\n");
-        printf("1 - Data Input\n");
-        printf("    1) Enter the name. Name should not be an empty string and also should not start with a space.\n");
-        printf("    2) Enter surname. The same as the name.\n");
-        printf("    3) Enter patronymic. The same as the name.\n");
-        printf("    4) Enter growth. The number must be > 0. The fractional part is entered through the point.\n");
-        printf("    5) Enter weight. The same as a growth.\n");
-        printf("    6) Enter vision. The same as a growth.\n");
-        printf("    7) Enter blood group. Must be integer and > 0.\n\n");
-        printf("2 - Print students data. Shows only a) data.\n");
-        printf("    Displays the full names of all the students, also height and weight.\n\n");
-        printf("3 - Print students data. Shows b) data.\n");
-        printf("    Displays the full names of all the students, also height, weight, vision and blood group.\n\n");
-        printf("4 - Exit\n");
-        printf("    Close the program.\n");
-        printf("================================================================================\n");
+    if (!strcmp(argv[1], "-h")) {
+        printf("================================================================================\n"
+               "                                     MANUAL:\n\n"
+               "Commands: 1 2 3 4\n\n"
+               "1 - Data Input\n"
+               "    1) Enter the name. Name should not be an empty string and also should not start with a space.\n"
+               "    2) Enter surname. The same as the name.\n"
+               "    3) Enter patronymic. The same as the name.\n"
+               "    4) Enter growth. The number must be > 0. The fractional part is entered through the point.\n"
+               "    5) Enter weight. The same as a growth.\n"
+               "    6) Enter vision. The same as a growth.\n"
+               "    7) Enter blood group. Must be integer and > 0.\n\n"
+               "2 - Print students data. Shows only a) data.\n"
+               "    Displays the full names of all the students, also height and weight.\n\n"
+               "3 - Print students data. Shows b) data.\n"
+               "    Displays the full names of all the students, also height, weight, vision and blood group.\n\n"
+               "4 - Exit\n"
+               "    Close the program.\n"
+               "================================================================================\n");
     }
 }
